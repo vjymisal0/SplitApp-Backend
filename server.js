@@ -33,7 +33,7 @@ app.get('/', async (req, res) => {
     res.render('index', { expenses });
 });
 
-app.post('/expenses', async (req, res) => {
+/*app.post('/expenses', async (req, res) => {
     const { amount, description, paid_by, participants, share_type, shares } = req.body;
 
     const parsedParticipants = participants.split(',').map(p => p.trim());
@@ -56,7 +56,64 @@ app.post('/expenses', async (req, res) => {
     });
 
     res.redirect('/');
+});*/
+
+
+
+app.post('/expenses', async (req, res) => {
+    try {
+        const { amount, description, paid_by, participants, share_type, shares } = req.body;
+
+        if (!amount || isNaN(amount) || amount <= 0 ||
+            !description || !paid_by || !participants) {
+            return res.status(400).send('Invalid input: All required fields must be filled and amount should be positive.');
+        }
+
+        const parsedParticipants = participants.split(',').map(p => p.trim()).filter(Boolean);
+        if (parsedParticipants.length === 0) {
+            return res.status(400).send('Participants must include at least one valid name.');
+        }
+
+        let parsedShares = [];
+
+        if (share_type !== 'equal') {
+            if (!shares || shares.trim().length === 0) {
+                return res.status(400).send('Shares required for non-equal share types.');
+            }
+
+            parsedShares = shares.split(',').map(pair => {
+                const [person, value] = pair.split(':');
+                return { person: person.trim(), value: parseFloat(value) };
+            });
+
+            const total = parsedShares.reduce((sum, s) => sum + s.value, 0);
+            if (isNaN(total) || total <= 0) {
+                return res.status(400).send('Share values must be valid and positive.');
+            }
+
+            const allNames = parsedShares.map(s => s.person);
+            const allValid = parsedParticipants.every(p => allNames.includes(p));
+            if (!allValid) {
+                return res.status(400).send('All participants must be included in shares.');
+            }
+        }
+
+        const expense = await Expense.create({
+            amount,
+            description,
+            paid_by,
+            participants: parsedParticipants,
+            share_type,
+            shares: parsedShares
+        });
+
+        res.redirect('/');
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error. Failed to add expense.');
+    }
 });
+
 
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
