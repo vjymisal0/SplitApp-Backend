@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Settlement Summary</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1><i class="fas fa-balance-scale"></i> Settlement Summary</h1>
+
+        <h2>💰 Individual Balances</h2>
+        <ul class="expense-list">
+            <% Object.entries(balances).forEach(([person, amount])=> { %>
+                <li>
+                    <strong>
+                        <%= person %>:
+                    </strong>
+                    <% if (amount> 0) { %>
+                        <span style="color:green;">to receive ₹<%= amount.toFixed(2) %></span>
+                        <% } else if (amount < 0) { %>
+                            <span style="color:red;">owes ₹<%= Math.abs(amount).toFixed(2) %></span>
+                            <% } else { %>
+                                <span>settled up</span>
+                                <% } %>
+                </li>
+                <% }) %>
+        </ul>
+
+        <h2>🔁 Simplified Transactions</h2>
+        <ul class="expense-list">
+            <% settlements.forEach(s=> { %>
+                <li><strong>
+                        <%= s.from %>
+                    </strong> pays <strong>
+                        <%= s.to %>
+                    </strong> ₹<%= s.amount %>
+                </li>
+                <% }) %>
+        </ul>
+
+        <a href="/" class="btn-edit"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+</body>
+
+</html>
