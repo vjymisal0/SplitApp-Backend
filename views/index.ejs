@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Split App</title>
+  <style>
+    body { font-family: sans-serif; max-width: 700px; margin: 2rem auto; background: #f9fafb; }
+    input, button { margin: 0.25rem 0; padding: 0.5rem; width: 100%; border: 1px solid #ccc; border-radius: 4px; }
+    button { background: #2563eb; color: white; font-weight: bold; border: none; cursor: pointer; }
+    ul { padding-left: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Split App</h1>
+
+  <form action="/expenses" method="post">
+    <input name="amount" placeholder="Amount" required />
+    <input name="description" placeholder="Description" required />
+    <input name="paid_by" placeholder="Paid By" required />
+    <input name="participants" placeholder="Participants (comma-separated)" required />
+    <button type="submit">Add Expense</button>
+  </form>
+
+  <h2>Expenses</h2>
+  <ul>
+    <% expenses.forEach(exp => { %>
+      <li>
+        <strong><%= exp.description %></strong> — ₹<%= exp.amount %><br />
+        Paid by: <%= exp.paid_by %><br />
+        Participants: <%= exp.participants.join(', ') %>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
+    
