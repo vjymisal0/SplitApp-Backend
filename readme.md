@@ -21,11 +21,6 @@ A simple and efficient backend service to split expenses among friends, roommate
     <img src="./screenshots/editexpensepage.png" alt="Screenshot 2" width="400"/>
     <img src="./screenshots/summarypage.png" alt="Screenshot 3" width="400"/>
 </p>
-<!-- Add your screenshots below -->
-![Screenshot 1](./screenshots/mainpage.png)
-![Screenshot 2](./screenshots/editexpensepage.png)
-![Screenshot 3](/screenshots/summarypage.png)
-
 ---
 
 ## Live Demo & API
