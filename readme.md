@@ -1,23 +1,86 @@
-# Split App - Expense Splitter Backend
+# Expense Split Project
 
-## Setup
-1. Clone the repository
-2. Run`npm install`
-3. Add `.env` file with your MongoDB URI
-4. Run`npm start`
+A simple and efficient backend service to split expenses among friends, roommates, or colleagues. Easily track who owes whom and settle up with minimal hassle.
 
-## API Endpoints
-    - `POST /expenses` - Add new expense
-        - `GET /expenses` - List all expenses
-            - `PUT /expenses/:id` - Update expense
-                - `DELETE /expenses/:id` - Delete expense
-                    - `GET /people` - List all people
-                        - `GET /balances` - Current balance sheet
-                            - `GET /settlements` - Simplified settlements
+---
 
-## Deployment
-Deploy using[Render](https://render.com) or [Railway](https://railway.app).
+## Features
 
-## Notes
-                            - Add at least 3 people: Shantanu, Sanket, Om
-                            - Preload some test expenses for Postman collection
+- Create and manage groups for expense splitting
+- Add, edit, and delete expenses
+- Automatic calculation of balances and settlements
+- RESTful API for integration with frontend or third-party apps
+
+---
+
+## Screenshots
+<p align="center">
+    <img src="./screenshots/mainpage.png" alt="Screenshot 1" width="600"/>
+</p>
+<p align="center">
+    <img src="./screenshots/editexpensepage.png" alt="Screenshot 2" width="400"/>
+    <img src="./screenshots/summarypage.png" alt="Screenshot 3" width="400"/>
+</p>
+<!-- Add your screenshots below -->
+![Screenshot 1](./screenshots/mainpage.png)
+![Screenshot 2](./screenshots/editexpensepage.png)
+![Screenshot 3](/screenshots/summarypage.png)
+
+---
+
+## Live Demo & API
+
+- **Live App:** [Deployed Link](https://splitapp-krio.onrender.com/)
+- **API Documentation & Testing:** [Postman Collection](https://www.postman.com/avionics-saganist-53291061/my-workspace/example/36927067-43d0eac2-8345-47a8-89b7-318522b62586)
+
+---
+
+## Setup Guide
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v14 or above)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [MongoDB](https://www.mongodb.com/) (local or cloud)
+
+### Installation
+
+1. **Clone the repository**
+    ```bash
+    git clone https://github.com/vjymisal0/SplitApp-Backend.git
+    cd SplitApp-Backend
+    ```
+
+2. **Install dependencies**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+3. **Configure environment variables**
+
+    Create a `.env` file in the root directory and add the following:
+    ```
+    PORT=5000
+    MONGODB_URI=your_mongodb_connection_string
+     ```
+
+4. **Run the server**
+    ```bash
+    npm start
+    # or
+    yarn start
+    ```
+
+    The server should now be running at `http://localhost:5000`.
+
+---
+
+## Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+
