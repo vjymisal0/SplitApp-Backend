@@ -26,7 +26,7 @@ A simple and efficient backend service to split expenses among friends, roommate
 ## Live Demo & API
 
 - **Live App:** [Deployed Link](https://splitapp-krio.onrender.com/)
-- **API Documentation & Testing:** [Postman Collection](https://www.postman.com/avionics-saganist-53291061/my-workspace/example/36927067-43d0eac2-8345-47a8-89b7-318522b62586)
+- **API Documentation & Testing:** [Postman Collection](https://www.postman.com/sadasd-4116/my-workspace/collection/7jezfuf/split-app-by-vijay-misal?action=share&creator=36927067)
 
 ---
 
